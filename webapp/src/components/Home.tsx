@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import { MainContainer } from "./MainContainer";
+import { Chapters } from "./Chapters";
 
 type MiniDrawerProps = {};
 
@@ -20,25 +21,8 @@ export const Home: React.FC<MiniDrawerProps> = ({}) => {
 
   return (
     <Box display="flex" height="100vh">
-      <Box width={400}>
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <Box>
-              <ListItem button key={text}>
-                <Typography
-                  style={{
-                    fontWeight: 700,
-                  }}
-                >
-                  {text}
-                </Typography>
-              </ListItem>
-              <Box>
-                <Divider />
-              </Box>
-            </Box>
-          ))}
-        </List>
+      <Box px={2} width={800}>
+        <Chapters />
       </Box>
       <Divider orientation="vertical" />
       <MainContainer />

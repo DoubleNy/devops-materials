@@ -1,5 +1,10 @@
 import { createTheme } from "@mui/material";
 
+export const BLUE = "#0A1929";
+export const DIVIDER_BLUE = "#132f4c";
+export const LIGHT_BLUE = "#a5d8ff";
+export const LIST_BACKGROUND = "#173a5e";
+
 const theme = createTheme({
   spacing: 4,
   typography: {
@@ -7,9 +12,15 @@ const theme = createTheme({
     htmlFontSize: 14,
     fontSize: 12,
     body1: {
-      lineHeight: 1.33,
       fontSize: 14,
-      fontWeight: "inherit",
+    },
+    subtitle1: {
+      fontSize: 16,
+      letterSpacing: 0.5,
+      fontWeight: 900,
+    },
+    h1: {
+      fontSize: 24,
     },
   },
   palette: {
@@ -28,6 +39,23 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          backgroundColor: LIST_BACKGROUND,
+        },
+      },
+    },
+    MuiList: {
+      defaultProps: {
+        color: LIGHT_BLUE,
+      },
+      styleOverrides: {
+        root: {
+          // backgroundColor: LIST_BACKGROUND,
+        },
+      },
+    },
     MuiDivider: {
       defaultProps: {
         color: "#132f4c",
