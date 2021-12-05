@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import { MainContainer } from "./MainContainer";
+import { Content } from "./Content";
 import { Chapters } from "./Chapters";
 
 type MiniDrawerProps = {};
@@ -13,13 +13,13 @@ export const Home: React.FC<MiniDrawerProps> = ({}) => {
     <Box
       display="grid"
       gridTemplateColumns="1fr 4fr"
-      px={4}
+      p={4}
       sx={{
         gap: 4,
       }}
     >
       <Chapters />
-      <MainContainer />
+      <Content />
     </Box>
   );
 };

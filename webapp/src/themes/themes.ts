@@ -4,6 +4,7 @@ export const BLUE = "#0A1929";
 export const DIVIDER_BLUE = "#132f4c";
 export const LIGHT_BLUE = "#a5d8ff";
 export const LIST_BACKGROUND = "#173a5e";
+export const CODE_BACKGROUND = "#001e3c";
 
 const theme = createTheme({
   spacing: 4,

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -13,36 +12,82 @@ import { Collapse, Icon } from "@mui/material";
 type ChaptersProps = {};
 
 const CHAPTERS = [
-  { name: "Getting Started", expandable: true },
-  { name: "Github", expandable: true },
-  { name: "Heroku", expandable: true },
-  { name: "Shoreline", expandable: true },
-  { name: "About" },
-];
-
-const SUBCHAPTERS = [
-  { name: "Getting Started", expandable: true },
-  { name: "Github", expandable: true },
-  { name: "Heroku", expandable: true },
-  { name: "Shoreline", expandable: true },
+  {
+    name: "Getting Started",
+    expandable: true,
+    subchapters: [
+      {
+        name: "Hello World",
+        content: [
+          {
+            title: "Introduction",
+          },
+        ],
+      },
+      { name: "Introduction", content: [] },
+      { name: "Scope" },
+      { name: "Prepare your hands" },
+    ],
+  },
+  {
+    name: "Github",
+    expandable: true,
+    subchapters: [
+      { name: "What is Github" },
+      { name: "Create a repo" },
+      { name: "Fork a repo" },
+      { name: "Github flow" },
+      { name: "Contributing to projects" },
+    ],
+  },
+  {
+    name: "Heroku",
+    expandable: true,
+    subchapters: [
+      { name: "What is Github" },
+      { name: "Create a repo" },
+      { name: "Fork a repo" },
+      { name: "Github flow" },
+      { name: "Contributing to projects" },
+    ],
+  },
+  {
+    name: "Shoreline",
+    expandable: true,
+    subchapters: [
+      { name: "What is Github" },
+      { name: "Create a repo" },
+      { name: "Fork a repo" },
+      { name: "Github flow" },
+      { name: "Contributing to projects" },
+    ],
+  },
+  { name: "DevOpsverse" },
   { name: "About" },
 ];
 
 export const Chapters: React.FC<ChaptersProps> = ({}) => {
-  const theme = useTheme();
-  const [selected, setSelected] = useState(0);
+  const [collapseChapter, setCollapseChapter] = useState(0);
+  const [selectedSubchapter, setSelectedSubchapter] = useState(0);
 
-  const handleSelectChapter = (index: number) => {
-    setSelected(index);
+  const handleCollapseChapter = (index: number) => {
+    if (index === collapseChapter) {
+      setCollapseChapter(-1);
+      return;
+    }
+    setCollapseChapter(index);
+  };
+
+  const handleSelectSubChapter = (index: number) => {
+    setSelectedSubchapter(index);
   };
 
   return (
     <List>
-      {CHAPTERS.map(({ expandable, name }, index) => (
-        <Box key={index} pt={2}>
+      {CHAPTERS.map(({ expandable, name, subchapters }, index) => (
+        <Box key={index}>
           <ListItem
             sx={{
-              p: 1,
               borderRadius: 2,
               cursor: "pointer",
               "&.Mui-selected": {
@@ -53,8 +98,7 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
                 backgroundColor: LIST_BACKGROUND,
               },
             }}
-            selected={index === selected}
-            onClick={() => handleSelectChapter(index)}
+            onClick={() => handleCollapseChapter(index)}
           >
             <Box
               display="flex"
@@ -66,13 +110,12 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
               {expandable && (
                 <Icon
                   sx={
-                    selected !== index
+                    collapseChapter !== index
                       ? {
                           transform: "rotate(-90deg)",
+                          mr: 1,
                         }
-                      : {
-                          fill: "red",
-                        }
+                      : null
                   }
                 >
                   <KeyboardArrowDownIcon fontSize="small" />
@@ -84,16 +127,17 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
             <Divider />
           </Box>
           <Collapse
-            in={expandable && selected === index}
+            in={expandable && collapseChapter === index}
             timeout="auto"
             unmountOnExit={true}
           >
-            {SUBCHAPTERS.map(() => (
+            {subchapters?.map(({ name }, index) => (
               <List>
                 <Box key={index} pt={2}>
                   <ListItem
                     sx={{
-                      p: 1,
+                      py: 1,
+                      px: 4,
                       borderRadius: 2,
                       cursor: "pointer",
                       "&.Mui-selected": {
@@ -104,9 +148,11 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
                         backgroundColor: LIST_BACKGROUND,
                       },
                     }}
-                    selected={index === selected}
-                    onClick={() => handleSelectChapter(index)}
-                  />
+                    selected={index === selectedSubchapter}
+                    onClick={() => handleSelectSubChapter(index)}
+                  >
+                    {name}
+                  </ListItem>
                 </Box>
               </List>
             ))}

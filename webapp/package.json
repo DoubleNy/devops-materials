@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@hookstate/core": "^3.0.13",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/styles": "^5.2.2",
@@ -16,11 +17,13 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "@uiw/react-monacoeditor": "^3.4.5",
+    "@monaco-editor/react": "4.0.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-markdown": "^7.1.1",
     "react-scripts": "4.0.3",
     "react-syntax-highlighter": "^15.4.5",
+    "remark-gfm": "^3.0.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
