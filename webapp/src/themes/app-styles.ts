@@ -11,4 +11,8 @@ export const AppStyles = css`
   #root {
     height: 100%;
   }
+  a {
+    color: #66b2ff;
+    font-weight: 850;
+  }
 `;

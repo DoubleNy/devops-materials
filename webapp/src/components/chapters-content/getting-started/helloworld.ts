@@ -1,4 +1,7 @@
-export const helloworld = `
+export const helloworld = {
+  title: "Hello world",
+  caption: "Follow this Hello World exercise to get started with GitHub.",
+  content: `
 ## Introduction
 
 GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
@@ -37,6 +40,8 @@ This diagram shows:
 * The main branch
 * A new branch called feature
 * The journey that feature takes before it's merged into main
+
+![Image](https://i.ibb.co/2hKNj8x/Image.png "Image") 
 
 Have you ever saved different versions of a file? Something like:
 
@@ -84,4 +89,5 @@ You can even open pull requests in your own repository and merge them yourself. 
 7. Click Create pull request.
 
 Your collaborators can now review your edits and make suggestions.
-`;
+`,
+};

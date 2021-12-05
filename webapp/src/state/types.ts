@@ -1,5 +1,9 @@
-import { Content } from "./state";
+export type Chapter = {
+  title: string;
+  content: string;
+  caption: string;
+};
 
 export type AppState = {
-  currentContent: string | null;
+  currentContent: Chapter | null;
 };

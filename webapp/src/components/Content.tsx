@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { MarkdownContent } from "./markdown/MarkdownContent";
 import { useState } from "react";
-import { IconButton, Tooltip } from "@mui/material";
+import { IconButton, Tooltip, Typography } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { useCurrentContent } from "../state/hooks";
@@ -28,7 +28,16 @@ export const Content: React.FC<MainContainerProps> = ({}) => {
           p: 4,
         }}
       >
-        <MarkdownContent value={currentContent} />
+        <Typography variant="h1">{currentContent.title}</Typography>
+        <Typography
+          variant="h3"
+          style={{
+            color: "gray",
+          }}
+        >
+          {currentContent.caption}
+        </Typography>
+        <MarkdownContent value={currentContent.content} />
       </Box>
     );
   }

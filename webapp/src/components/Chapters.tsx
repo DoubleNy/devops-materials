@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import { useState } from "react";
-import { LIGHT_BLUE, LIST_BACKGROUND } from "../themes/themes";
+import { LIGHT_BLUE, LINK_BLUE, LIST_BACKGROUND } from "../themes/themes";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Collapse, Icon } from "@mui/material";
 import { useCurrentContent } from "../state/hooks";
@@ -104,7 +104,7 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
               alignItems="center"
               width="100%"
             >
-              <Typography variant="h1">{name}</Typography>
+              <Typography variant="h2">{name}</Typography>
               {expandable && (
                 <Icon
                   sx={
@@ -116,7 +116,12 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
                       : null
                   }
                 >
-                  <KeyboardArrowDownIcon fontSize="small" />
+                  <KeyboardArrowDownIcon
+                    fontSize="small"
+                    style={{
+                      fill: LINK_BLUE,
+                    }}
+                  />
                 </Icon>
               )}
             </Box>
@@ -149,7 +154,7 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
                     selected={index === selectedSubchapter}
                     onClick={() => handleSelectSubChapter(index)}
                   >
-                    {name}
+                    <Typography variant="subtitle1">{name}</Typography>
                   </ListItem>
                 </Box>
               </List>

@@ -1,8 +1,7 @@
 import { createState } from "@hookstate/core";
 import { AppState } from "./types";
-
-export type Content = any;
+import { helloworld } from "../components/chapters-content/getting-started";
 
 export const state = createState<AppState>({
-  currentContent: null,
+  currentContent: helloworld,
 });
