@@ -8,58 +8,52 @@ import { useState } from "react";
 import { LIGHT_BLUE, LIST_BACKGROUND } from "../themes/themes";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Collapse, Icon } from "@mui/material";
+import { useCurrentContent } from "../state/hooks";
+import {
+  helloworld,
+  createRepo,
+  forkRepo,
+  learningResources,
+  githubFlow,
+} from "./chapters-content/getting-started";
 
 type ChaptersProps = {};
 
 const CHAPTERS = [
   {
-    name: "Getting Started",
+    name: "Github",
     expandable: true,
     subchapters: [
       {
         name: "Hello World",
-        content: [
-          {
-            title: "Introduction",
-          },
-        ],
+        content: helloworld,
       },
-      { name: "Introduction", content: [] },
-      { name: "Scope" },
-      { name: "Prepare your hands" },
-    ],
-  },
-  {
-    name: "Github",
-    expandable: true,
-    subchapters: [
-      { name: "What is Github" },
-      { name: "Create a repo" },
-      { name: "Fork a repo" },
-      { name: "Github flow" },
-      { name: "Contributing to projects" },
+      { name: "Create a repo", content: createRepo },
+      { name: "Fork a repo", content: forkRepo },
+      { name: "Github flow", content: githubFlow },
+      { name: "Learning resources", content: learningResources },
     ],
   },
   {
     name: "Heroku",
     expandable: true,
     subchapters: [
-      { name: "What is Github" },
-      { name: "Create a repo" },
-      { name: "Fork a repo" },
-      { name: "Github flow" },
-      { name: "Contributing to projects" },
+      { name: "What is Github", content: null },
+      { name: "Create a repo", content: null },
+      { name: "Fork a repo", content: null },
+      { name: "Github flow", content: null },
+      { name: "Contributing to projects", content: null },
     ],
   },
   {
     name: "Shoreline",
     expandable: true,
     subchapters: [
-      { name: "What is Github" },
-      { name: "Create a repo" },
-      { name: "Fork a repo" },
-      { name: "Github flow" },
-      { name: "Contributing to projects" },
+      { name: "What is Github", content: null },
+      { name: "Create a repo", content: null },
+      { name: "Fork a repo", content: null },
+      { name: "Github flow", content: null },
+      { name: "Contributing to projects", content: null },
     ],
   },
   { name: "DevOpsverse" },
@@ -69,6 +63,7 @@ const CHAPTERS = [
 export const Chapters: React.FC<ChaptersProps> = ({}) => {
   const [collapseChapter, setCollapseChapter] = useState(0);
   const [selectedSubchapter, setSelectedSubchapter] = useState(0);
+  const setCurrentContent = useCurrentContent().set;
 
   const handleCollapseChapter = (index: number) => {
     if (index === collapseChapter) {
@@ -80,6 +75,9 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
 
   const handleSelectSubChapter = (index: number) => {
     setSelectedSubchapter(index);
+    setCurrentContent(
+      CHAPTERS[collapseChapter]?.subchapters?.[index].content ?? null
+    );
   };
 
   return (

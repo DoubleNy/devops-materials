@@ -1,17 +1,18 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { CodeSnippet } from "./CodeSnippet";
 import { MarkdownContent } from "./markdown/MarkdownContent";
 import { useState } from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { useCurrentContent } from "../state/hooks";
+import { useScopedDowngradedStateValue } from "./useScopedDowngradedStateValue";
 
 type MainContainerProps = {};
 
 export const Content: React.FC<MainContainerProps> = ({}) => {
   const [isEditing, setIsEditing] = useState(false);
+  const currentContent = useScopedDowngradedStateValue(useCurrentContent());
   const [value, setValue] = useState("");
 
   const handleChange = (content?: string) => {
@@ -19,6 +20,18 @@ export const Content: React.FC<MainContainerProps> = ({}) => {
 
     setValue(content);
   };
+
+  if (currentContent) {
+    return (
+      <Box
+        sx={{
+          p: 4,
+        }}
+      >
+        <MarkdownContent value={currentContent} />
+      </Box>
+    );
+  }
 
   return (
     <Box

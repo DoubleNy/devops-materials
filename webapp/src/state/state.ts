@@ -4,5 +4,5 @@ import { AppState } from "./types";
 export type Content = any;
 
 export const state = createState<AppState>({
-  currentContent: [],
+  currentContent: null,
 });

@@ -18,7 +18,15 @@ export const Home: React.FC<MiniDrawerProps> = ({}) => {
         gap: 4,
       }}
     >
-      <Chapters />
+      <Box
+        sx={{
+          height: "100vh",
+          position: "sticky",
+          top: 0,
+        }}
+      >
+        <Chapters />
+      </Box>
       <Content />
     </Box>
   );
