@@ -37,84 +37,82 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
   };
 
   return (
-    <Box>
-      <List>
-        {CHAPTERS.map(({ expandable, name }, index) => (
-          <Box key={index} pt={2}>
-            <ListItem
-              sx={{
-                p: 1,
-                borderRadius: 2,
-                cursor: "pointer",
-                "&.Mui-selected": {
-                  backgroundColor: LIST_BACKGROUND,
-                },
-                "&:hover": {
-                  color: LIGHT_BLUE,
-                  backgroundColor: LIST_BACKGROUND,
-                },
-              }}
-              selected={index === selected}
-              onClick={() => handleSelectChapter(index)}
+    <List>
+      {CHAPTERS.map(({ expandable, name }, index) => (
+        <Box key={index} pt={2}>
+          <ListItem
+            sx={{
+              p: 1,
+              borderRadius: 2,
+              cursor: "pointer",
+              "&.Mui-selected": {
+                backgroundColor: LIST_BACKGROUND,
+              },
+              "&:hover": {
+                color: LIGHT_BLUE,
+                backgroundColor: LIST_BACKGROUND,
+              },
+            }}
+            selected={index === selected}
+            onClick={() => handleSelectChapter(index)}
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
             >
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                width="100%"
-              >
-                <Typography variant="h1">{name}</Typography>
-                {expandable && (
-                  <Icon
-                    sx={
-                      selected !== index
-                        ? {
-                            transform: "rotate(-90deg)",
-                          }
-                        : {
-                            fill: "red",
-                          }
-                    }
-                  >
-                    <KeyboardArrowDownIcon fontSize="small" />
-                  </Icon>
-                )}
-              </Box>
-            </ListItem>
-            <Box pt={2}>
-              <Divider />
+              <Typography variant="h1">{name}</Typography>
+              {expandable && (
+                <Icon
+                  sx={
+                    selected !== index
+                      ? {
+                          transform: "rotate(-90deg)",
+                        }
+                      : {
+                          fill: "red",
+                        }
+                  }
+                >
+                  <KeyboardArrowDownIcon fontSize="small" />
+                </Icon>
+              )}
             </Box>
-            <Collapse
-              in={expandable && selected === index}
-              timeout="auto"
-              unmountOnExit={true}
-            >
-              {SUBCHAPTERS.map(() => (
-                <List>
-                  <Box key={index} pt={2}>
-                    <ListItem
-                      sx={{
-                        p: 1,
-                        borderRadius: 2,
-                        cursor: "pointer",
-                        "&.Mui-selected": {
-                          backgroundColor: LIST_BACKGROUND,
-                        },
-                        "&:hover": {
-                          color: LIGHT_BLUE,
-                          backgroundColor: LIST_BACKGROUND,
-                        },
-                      }}
-                      selected={index === selected}
-                      onClick={() => handleSelectChapter(index)}
-                    />
-                  </Box>
-                </List>
-              ))}
-            </Collapse>
+          </ListItem>
+          <Box pt={2}>
+            <Divider />
           </Box>
-        ))}
-      </List>
-    </Box>
+          <Collapse
+            in={expandable && selected === index}
+            timeout="auto"
+            unmountOnExit={true}
+          >
+            {SUBCHAPTERS.map(() => (
+              <List>
+                <Box key={index} pt={2}>
+                  <ListItem
+                    sx={{
+                      p: 1,
+                      borderRadius: 2,
+                      cursor: "pointer",
+                      "&.Mui-selected": {
+                        backgroundColor: LIST_BACKGROUND,
+                      },
+                      "&:hover": {
+                        color: LIGHT_BLUE,
+                        backgroundColor: LIST_BACKGROUND,
+                      },
+                    }}
+                    selected={index === selected}
+                    onClick={() => handleSelectChapter(index)}
+                  />
+                </Box>
+              </List>
+            ))}
+          </Collapse>
+        </Box>
+      ))}
+    </List>
   );
 };
