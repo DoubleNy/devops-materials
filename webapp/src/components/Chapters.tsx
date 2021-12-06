@@ -16,6 +16,19 @@ import {
   learningResources,
   githubFlow,
 } from "./chapters-content/getting-started";
+import {
+  deployingWithGit,
+  trainingandeducation,
+  whatisheroku,
+} from "./chapters-content/heroku";
+import { deployingNode } from "./chapters-content/heroku/deployingNode";
+import {
+  actions,
+  alarms,
+  bots,
+  opLanguage,
+  whatIsShoreline,
+} from "./chapters-content/shoreline";
 
 type ChaptersProps = {};
 
@@ -38,26 +51,25 @@ const CHAPTERS = [
     name: "Heroku",
     expandable: true,
     subchapters: [
-      { name: "What is Github", content: null },
-      { name: "Create a repo", content: null },
-      { name: "Fork a repo", content: null },
-      { name: "Github flow", content: null },
-      { name: "Contributing to projects", content: null },
+      { name: "What is Heroku", content: whatisheroku },
+      { name: "Deploying with Git", content: deployingWithGit },
+      { name: "Deploying Node.js Apps", content: deployingNode },
+      { name: "Training and Education", content: trainingandeducation },
     ],
   },
   {
     name: "Shoreline",
     expandable: true,
     subchapters: [
-      { name: "What is Github", content: null },
-      { name: "Create a repo", content: null },
-      { name: "Fork a repo", content: null },
-      { name: "Github flow", content: null },
-      { name: "Contributing to projects", content: null },
+      { name: "What is Shoreline", content: whatIsShoreline },
+      { name: "Alarms", content: alarms },
+      { name: "Bots", content: bots },
+      { name: "Actions", content: actions },
+      { name: "Op Language", content: opLanguage },
     ],
   },
-  { name: "DevOpsverse" },
-  { name: "About" },
+  { name: "DevOpsverse", disabled: true },
+  { name: "About", disabled: true },
 ];
 
 export const Chapters: React.FC<ChaptersProps> = ({}) => {
@@ -82,52 +94,55 @@ export const Chapters: React.FC<ChaptersProps> = ({}) => {
 
   return (
     <List>
-      {CHAPTERS.map(({ expandable, name, subchapters }, index) => (
+      {CHAPTERS.map(({ expandable, name, subchapters, disabled }, index) => (
         <Box key={index}>
-          <ListItem
-            sx={{
-              borderRadius: 2,
-              cursor: "pointer",
-              "&.Mui-selected": {
-                backgroundColor: LIST_BACKGROUND,
-              },
-              "&:hover": {
-                color: LIGHT_BLUE,
-                backgroundColor: LIST_BACKGROUND,
-              },
-            }}
-            onClick={() => handleCollapseChapter(index)}
-          >
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              width="100%"
+          <Box pt={4}>
+            <ListItem
+              sx={{
+                borderRadius: 2,
+                cursor: "pointer",
+                "&.Mui-selected": {
+                  backgroundColor: LIST_BACKGROUND,
+                },
+                "&:hover": {
+                  color: LIGHT_BLUE,
+                  backgroundColor: LIST_BACKGROUND,
+                },
+              }}
+              disabled={disabled}
+              onClick={() => handleCollapseChapter(index)}
             >
-              <Typography variant="h2">{name}</Typography>
-              {expandable && (
-                <Icon
-                  sx={
-                    collapseChapter !== index
-                      ? {
-                          transform: "rotate(-90deg)",
-                          mr: 1,
-                        }
-                      : null
-                  }
-                >
-                  <KeyboardArrowDownIcon
-                    fontSize="small"
-                    style={{
-                      fill: LINK_BLUE,
-                    }}
-                  />
-                </Icon>
-              )}
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                width="100%"
+              >
+                <Typography variant="h2">{name}</Typography>
+                {expandable && (
+                  <Icon
+                    sx={
+                      collapseChapter !== index
+                        ? {
+                            transform: "rotate(-90deg)",
+                            mr: 1,
+                          }
+                        : null
+                    }
+                  >
+                    <KeyboardArrowDownIcon
+                      fontSize="small"
+                      style={{
+                        fill: LINK_BLUE,
+                      }}
+                    />
+                  </Icon>
+                )}
+              </Box>
+            </ListItem>
+            <Box pt={4}>
+              <Divider />
             </Box>
-          </ListItem>
-          <Box pt={2}>
-            <Divider />
           </Box>
           <Collapse
             in={expandable && collapseChapter === index}

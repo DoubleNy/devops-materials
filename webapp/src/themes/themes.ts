@@ -63,7 +63,7 @@ const theme = createTheme({
       },
       styleOverrides: {
         root: {
-          opacity: 0.4,
+          opacity: 0.3,
           borderWidth: 1,
         },
       },

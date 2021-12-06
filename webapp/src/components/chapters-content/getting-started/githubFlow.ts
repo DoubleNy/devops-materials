@@ -1,7 +1,8 @@
 export const githubFlow = {
   title: "Github Flow",
   caption: "Follow GitHub flow to collaborate on projects.",
-  content: `## Introduction
+  content: `---
+  ## Introduction
 
 GitHub flow is a lightweight, branch-based workflow. The GitHub flow is useful for everyone, not just developers. 
 

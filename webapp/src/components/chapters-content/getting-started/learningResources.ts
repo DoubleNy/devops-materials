@@ -2,7 +2,8 @@ export const learningResources = {
   title: "Learning Resources",
   caption:
     "There are a lot of helpful Git and GitHub resources on the web. This is a short list of our favorites!",
-  content: `## Using Git
+  content: `---
+  ## Using Git
 
 Familiarize yourself with Git by visiting the official Git project site and reading the ProGit book. You can review the Git command list or Git command lookup reference while using the Try Git simulator.
 

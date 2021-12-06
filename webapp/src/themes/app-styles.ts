@@ -15,4 +15,10 @@ export const AppStyles = css`
     color: #66b2ff;
     font-weight: 850;
   }
+  hr {
+    height: 1px;
+    background-color: #66b2ff;
+    opacity: 0.3;
+    border: none;
+  }
 `;

@@ -2,7 +2,8 @@ export const forkRepo = {
   title: "Fork a repo",
   caption:
     "A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project.",
-  content: `## About forks
+  content: `---
+  ## About forks
 
 Most commonly, forks are used to either propose changes to someone else's project or to use someone else's project as a starting point for your own idea. You can fork a repository to create a copy of the repository and make changes without affecting the upstream repository. For more information, see ["Working with forks."](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks)
 

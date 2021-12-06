@@ -2,7 +2,8 @@ export const createRepo = {
   title: "Create a repo",
   caption:
     "To put your project up on GitHub, you'll need to create a repository for it to live in.",
-  content: `## Create a repository
+  content: `---
+  ## Create a repository
 
 You can store a variety of projects in GitHub repositories, including open source projects. [With open source projects](http://opensource.org/about), you can share code to make better, more reliable software. You can use repositories to collaborate with others and track your work. For more information, see ["About repositories."](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-repositories)
 
